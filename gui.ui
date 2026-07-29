@@ -77,6 +77,11 @@
         </property>
         <item>
          <property name="text">
+          <string>Origami</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>V60</string>
          </property>
         </item>
@@ -87,24 +92,9 @@
         </item>
         <item>
          <property name="text">
-          <string>Origami</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
           <string>Aeropress</string>
          </property>
         </item>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="beanOriginInput">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="placeholderText">
-         <string>e.g., Ethiopia</string>
-        </property>
        </widget>
       </item>
       <item row="2" column="1">
@@ -359,6 +349,33 @@
         </property>
        </widget>
       </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="beanOriginInput">
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Isaiah's Competition Blend, Colombia Washed</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Lucy's Pink Bourbon, Colombia Washed</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Myrtle &amp; Cypress, Colombia Natural</string>
+         </property>
+        </item>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
@@ -381,7 +398,6 @@
   </action>
  </widget>
  <tabstops>
-  <tabstop>beanOriginInput</tabstop>
   <tabstop>dripperSelectionInput</tabstop>
   <tabstop>grindSettingInput</tabstop>
   <tabstop>coffeeDoseInput</tabstop>

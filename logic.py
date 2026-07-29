@@ -17,6 +17,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.__csv_file_name: str = os.path.join(base_dir, "data.csv")
+        self.beanOriginInput.set
         self.dateTimeEdit.setDate(QDate.currentDate())
         self.dateTimeEdit.setMaximumDate(QDate.currentDate())
         self.brewNotesInput.setTabChangesFocus(True)
@@ -51,8 +52,6 @@ class Logic(QMainWindow, Ui_MainWindow):
             select_date: str = self.dateTimeEdit.date().toString("MM-dd-yyyy")
 
             int_rate = 5 - rating
-
-
 
             row_data: list = [select_date, bean_str, method_str, grind, dose, water, temp, brew_time, int_rate, notes]
 
