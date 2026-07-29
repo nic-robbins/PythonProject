@@ -55,7 +55,7 @@ class Logic(QMainWindow, Ui_MainWindow):
                 writer.writerow(row_data)
 
             QMessageBox.information(self, "Success", "Brew submitted")
-            self.reset_form()
+            self.__clear_fields()
 
             if self.dripperSelectionInput.findText(method_str) == -1:
                 self.dripperSelectionInput.addItem(method_str)
@@ -64,7 +64,23 @@ class Logic(QMainWindow, Ui_MainWindow):
             QMessageBox.warning(self, "Input Error", str(val_error))
 
         except IOError as io_error:
-            QMessageBox.critical(self, "Failure", "Entry could not be saved", io_error)
+            QMessageBox.critical(self, "Failure", "Entry could not be saved", str(io_error))
+
+
+    def __clear_fields(self) -> None:
+        """
+        Quietly clears all fields and restores defaults without prompting user.
+        """
+        self.beanOriginInput.clear()
+        self.dripperSelectionInput.setCurrentIndex(0)
+        self.grindSettingInput.setCurrentIndex(0)
+        self.coffeeDoseInput.setValue(self.coffeeDoseInput.minimum())
+        self.totalWaterInput.setValue(self.totalWaterInput.minimum())
+        self.waterTempInput.setValue(self.waterTempInput.minimum())
+        self.brewTimeInput.setTime(self.brewTimeInput.minimumTime())
+        self.brewNotesInput.clear()
+        self.rateInput.setCurrentIndex(0)
+        self.dateTimeEdit.setDate(QDate.currentDate())
 
 
     def reset_form(self) -> None:
@@ -81,14 +97,5 @@ class Logic(QMainWindow, Ui_MainWindow):
         )
 
         if reply == QMessageBox.StandardButton.Yes:
-            self.beanOriginInput.clear()
-            self.dripperSelectionInput.setCurrentIndex(0)
-            self.grindSettingInput.setCurrentIndex(0)
-            self.coffeeDoseInput.setValue(self.coffeeDoseInput.minimum())
-            self.totalWaterInput.setValue(self.totalWaterInput.minimum())
-            self.waterTempInput.setValue(self.waterTempInput.minimum())
-            self.brewTimeInput.setTime(self.brewTimeInput.minimumTime())
-            self.brewNotesInput.clear()
-            self.rateInput.setCurrentIndex(0)
-            self.dateTimeEdit.setDate(QDate.currentDate())
+            self.__clear_fields()
 
