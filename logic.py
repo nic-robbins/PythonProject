@@ -70,15 +70,25 @@ class Logic(QMainWindow, Ui_MainWindow):
     def reset_form(self) -> None:
         """
         Clears out all text and restores the default values.
+        Asks the user if they're sure they want to reset the form.
         """
-        self.beanOriginInput.clear()
-        self.dripperSelectionInput.setCurrentIndex(0)
-        self.grindSettingInput.setCurrentIndex(0)
-        self.coffeeDoseInput.setValue(self.coffeeDoseInput.minimum())
-        self.totalWaterInput.setValue(self.totalWaterInput.minimum())
-        self.waterTempInput.setValue(self.waterTempInput.minimum())
-        self.brewTimeInput.setTime(self.brewTimeInput.minimumTime())
-        self.brewNotesInput.clear()
-        self.rateInput.setCurrentIndex(0)
-        self.dateTimeEdit.setDate(QDate.currentDate())
+        reply = QMessageBox.question(
+            self,
+            "Confirm Clear",
+            "Are you sure you want to clear the form?",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No
+        )
+
+        if reply == QMessageBox.StandardButton.Yes:
+            self.beanOriginInput.clear()
+            self.dripperSelectionInput.setCurrentIndex(0)
+            self.grindSettingInput.setCurrentIndex(0)
+            self.coffeeDoseInput.setValue(self.coffeeDoseInput.minimum())
+            self.totalWaterInput.setValue(self.totalWaterInput.minimum())
+            self.waterTempInput.setValue(self.waterTempInput.minimum())
+            self.brewTimeInput.setTime(self.brewTimeInput.minimumTime())
+            self.brewNotesInput.clear()
+            self.rateInput.setCurrentIndex(0)
+            self.dateTimeEdit.setDate(QDate.currentDate())
 
