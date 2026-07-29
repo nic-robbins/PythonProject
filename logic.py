@@ -33,30 +33,34 @@ class Logic(QMainWindow, Ui_MainWindow):
 
         try:
             if not bean_str:
-                raise ValueError("The 'Bean/Origin' field cannot be left blank")
+                raise ValueError("Bean/Origin field cannot be left blank.")
             if not method_str:
-                raise ValueError("Please select or type a valid 'Dripper/Brew Method'")
+                raise ValueError("Please select or type a valid Dripper/Brew Method.")
 
             dose: int = self.coffeeDoseInput.value()
             water: int = self.totalWaterInput.value()
 
             if dose <= 0 or water <= 0:
-                raise ValueError("Dose and water must be greater than 0")
+                raise ValueError("Dose and water must be greater than 0.")
 
             grind: str = self.grindSettingInput.currentText()
             temp: int = self.waterTempInput.value()
             brew_time: str = self.brewTimeInput.text()
             notes: str = self.brewNotesInput.toPlainText().strip()
-            rating: str = self.rateInput.currentText()
+            rating: int = self.rateInput.currentIndex()
             select_date: str = self.dateTimeEdit.date().toString("MM-dd-yyyy")
 
-            row_data: list = [select_date, bean_str, method_str, grind, dose, water, temp, brew_time, notes, rating]
+            int_rate = 5 - rating
+
+
+
+            row_data: list = [select_date, bean_str, method_str, grind, dose, water, temp, brew_time, int_rate, notes]
 
             with open(self.__csv_file_name, "a", newline="", encoding="utf-8") as file:
                 writer = csv.writer(file)
                 writer.writerow(row_data)
 
-            QMessageBox.information(self, "Success", "Brew submitted")
+            QMessageBox.information(self, "Success", "Brew submitted.")
             self.__clear_fields()
 
             if self.dripperSelectionInput.findText(method_str) == -1:
@@ -91,7 +95,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         """
         reply = QMessageBox.question(
             self,
-            "Confirm Clear",
+            "Confirm",
             "Are you sure you want to clear the form?",
             QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
             QMessageBox.StandardButton.No
