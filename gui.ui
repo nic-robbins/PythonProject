@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>400</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,204 +19,347 @@
   <property name="maximumSize">
    <size>
     <width>400</width>
-    <height>400</height>
+    <height>500</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Brew Tracker</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>false</bool>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="3" column="0">
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="leftMargin">
+       <number>20</number>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
+      <property name="rightMargin">
+       <number>20</number>
       </property>
-     </spacer>
-    </item>
-    <item row="6" column="1">
-     <widget class="QLabel" name="brewNotesLabel">
-      <property name="text">
-       <string>Notes</string>
+      <property name="verticalSpacing">
+       <number>10</number>
       </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QSpinBox" name="coffeeDoseInput">
-      <property name="suffix">
-       <string> g</string>
-      </property>
-      <property name="maximum">
-       <number>50</number>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="2">
-     <widget class="QTextEdit" name="brewNotesInput">
-      <property name="maximumSize">
-       <size>
-        <width>500</width>
-        <height>175</height>
-       </size>
-      </property>
-      <property name="placeholderText">
-       <string>Pour structure, tasting notes...</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="2">
-     <widget class="QSpinBox" name="totalWaterInput">
-      <property name="suffix">
-       <string> g</string>
-      </property>
-      <property name="maximum">
-       <number>1000</number>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
-     <widget class="QLabel" name="waterTempLabel">
-      <property name="text">
-       <string>Water Temp</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QLineEdit" name="beanOriginInput">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>e.g., Ethiopia</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="dripperSelectionLabel">
-      <property name="text">
-       <string>Dripper/Brew Method</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QComboBox" name="dripperSelectionInput">
-      <item>
-       <property name="text">
-        <string>V60</string>
-       </property>
+      <item row="3" column="0">
+       <widget class="QLabel" name="coffeeDoseLabel">
+        <property name="text">
+         <string>Coffee Dose</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
       </item>
-      <item>
-       <property name="text">
-        <string>Kalita</string>
-       </property>
+      <item row="3" column="1">
+       <widget class="QSpinBox" name="coffeeDoseInput">
+        <property name="buttonSymbols">
+         <enum>QAbstractSpinBox::UpDownArrows</enum>
+        </property>
+        <property name="suffix">
+         <string> g</string>
+        </property>
+        <property name="maximum">
+         <number>50</number>
+        </property>
+       </widget>
       </item>
-      <item>
-       <property name="text">
-        <string>Origami</string>
-       </property>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="dripperSelectionInput">
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>V60</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Kalita</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Origami</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Aeropress</string>
+         </property>
+        </item>
+       </widget>
       </item>
-      <item>
-       <property name="text">
-        <string>Aeropress</string>
-       </property>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="beanOriginInput">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>e.g., Ethiopia</string>
+        </property>
+       </widget>
       </item>
-     </widget>
-    </item>
-    <item row="5" column="2">
-     <widget class="QSpinBox" name="waterTempInput">
-      <property name="suffix">
-       <string extracomment="&quot; °F&quot;"> °F</string>
-      </property>
-      <property name="prefix">
-       <string/>
-      </property>
-      <property name="minimum">
-       <number>85</number>
-      </property>
-      <property name="maximum">
-       <number>212</number>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="beanOriginLabel">
-      <property name="text">
-       <string>Bean/Origin</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2">
-     <widget class="QDoubleSpinBox" name="grindSettingInput">
-      <property name="minimum">
-       <double>1.000000000000000</double>
-      </property>
-      <property name="maximum">
-       <double>50.000000000000000</double>
-      </property>
-      <property name="singleStep">
-       <double>0.100000000000000</double>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLabel" name="grindSettingLabel">
-      <property name="text">
-       <string>Grind Setting</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="1">
-     <widget class="QLabel" name="totalWaterLabel">
-      <property name="text">
-       <string>Water Amount</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QLabel" name="coffeeDoseLabel">
-      <property name="text">
-       <string>Coffee Dose</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="1" colspan="2">
-     <widget class="QPushButton" name="saveButton">
-      <property name="text">
-       <string>Save Entry</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="3">
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="8" column="1">
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="grindSettingInput">
+        <item>
+         <property name="text">
+          <string>Fine</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Medium-Fine</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Medium</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Medium-Coarse</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Coarse</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="totalWaterLabel">
+        <property name="text">
+         <string>Water Amount</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="grindSettingLabel">
+        <property name="text">
+         <string>Grind Setting</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="beanOriginLabel">
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string>Bean/Origin</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="dripperSelectionLabel">
+        <property name="text">
+         <string>Dripper/Brew Method</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="dateLabel">
+        <property name="text">
+         <string>Date</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QDateTimeEdit" name="dateTimeEdit">
+        <property name="buttonSymbols">
+         <enum>QAbstractSpinBox::UpDownArrows</enum>
+        </property>
+        <property name="displayFormat">
+         <string>MM/dd/yyyy</string>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QPushButton" name="clearButton">
+        <property name="text">
+         <string>Clear Form</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QSpinBox" name="waterTempInput">
+        <property name="buttonSymbols">
+         <enum>QAbstractSpinBox::UpDownArrows</enum>
+        </property>
+        <property name="suffix">
+         <string extracomment="&quot; °F&quot;"> °F</string>
+        </property>
+        <property name="prefix">
+         <string/>
+        </property>
+        <property name="minimum">
+         <number>85</number>
+        </property>
+        <property name="maximum">
+         <number>212</number>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="waterTempLabel">
+        <property name="text">
+         <string>Water Temp</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="brewTimeLabel">
+        <property name="text">
+         <string>Total Brew Time</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QTimeEdit" name="brewTimeInput">
+        <property name="wrapping">
+         <bool>false</bool>
+        </property>
+        <property name="buttonSymbols">
+         <enum>QAbstractSpinBox::NoButtons</enum>
+        </property>
+        <property name="showGroupSeparator" stdset="0">
+         <bool>false</bool>
+        </property>
+        <property name="maximumTime">
+         <time>
+          <hour>21</hour>
+          <minute>59</minute>
+          <second>59</second>
+         </time>
+        </property>
+        <property name="displayFormat">
+         <string>mm:ss</string>
+        </property>
+        <property name="calendarPopup">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QTextEdit" name="brewNotesInput">
+        <property name="maximumSize">
+         <size>
+          <width>500</width>
+          <height>175</height>
+         </size>
+        </property>
+        <property name="cursor" stdset="0">
+         <cursorShape>IBeamCursor</cursorShape>
+        </property>
+        <property name="placeholderText">
+         <string>Pour structure, tasting notes...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="ratingLabel">
+        <property name="text">
+         <string>Rating</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QComboBox" name="rateInput">
+        <item>
+         <property name="text">
+          <string>⭐⭐⭐⭐⭐</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>⭐⭐⭐⭐</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>⭐⭐⭐</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>⭐⭐</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>⭐</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QSpinBox" name="totalWaterInput">
+        <property name="buttonSymbols">
+         <enum>QAbstractSpinBox::UpDownArrows</enum>
+        </property>
+        <property name="suffix">
+         <string> g</string>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="brewNotesLabel">
+        <property name="text">
+         <string>Notes</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QPushButton" name="saveButton">
+        <property name="text">
+         <string>Save Entry</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -231,7 +374,24 @@
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionClear_Form">
+   <property name="text">
+    <string>Clear Form</string>
+   </property>
+  </action>
  </widget>
+ <tabstops>
+  <tabstop>beanOriginInput</tabstop>
+  <tabstop>dripperSelectionInput</tabstop>
+  <tabstop>grindSettingInput</tabstop>
+  <tabstop>coffeeDoseInput</tabstop>
+  <tabstop>totalWaterInput</tabstop>
+  <tabstop>waterTempInput</tabstop>
+  <tabstop>brewTimeInput</tabstop>
+  <tabstop>brewNotesInput</tabstop>
+  <tabstop>rateInput</tabstop>
+  <tabstop>dateTimeEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
