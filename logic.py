@@ -17,7 +17,6 @@ class Logic(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.__csv_file_name: str = os.path.join(base_dir, "data.csv")
-        self.beanOriginInput.set
         self.dateTimeEdit.setDate(QDate.currentDate())
         self.dateTimeEdit.setMaximumDate(QDate.currentDate())
         self.brewNotesInput.setTabChangesFocus(True)
@@ -85,7 +84,6 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.brewNotesInput.clear()
         self.rateInput.setCurrentIndex(0)
         self.dateTimeEdit.setDate(QDate.currentDate())
-
 
     def reset_form(self) -> None:
         """
