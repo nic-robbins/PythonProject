@@ -5,7 +5,14 @@ from PyQt6.QtWidgets import *
 
 
 class Logic(QMainWindow, Ui_MainWindow):
-    def __init__(self):
+    """
+    Class which includes all logic related to the functionality of the Brew Tracker app.
+    This app tracks different coffee recipes/brew strategies and saves each entry to a provided and formatted csv file.
+    """
+    def __init__(self) -> None:
+        """
+        Constructor method. Sets the default values of the brew object.
+        """
         super().__init__()
         self.setupUi(self)
 
@@ -20,9 +27,13 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.clearButton.clicked.connect(self.reset_form)
 
 
-    def submit(self):
-        bean_str = self.beanOriginInput.text()
-        method_str = self.dripperSelectionInput.currentText().strip()
+    def submit(self) -> None:
+        """
+        Submits the filled form so that an entry gets written to the csv file.
+        Also includes data validation.
+        """
+        bean_str: str = self.beanOriginInput.text()
+        method_str: str = self.dripperSelectionInput.currentText().strip()
 
         try:
             if not bean_str:
@@ -30,21 +41,21 @@ class Logic(QMainWindow, Ui_MainWindow):
             if not method_str:
                 raise ValueError("Please select or type a valid 'Dripper/Brew Method'")
 
-            dose = self.coffeeDoseInput.value()
-            water = self.totalWaterInput.value()
+            dose: int = self.coffeeDoseInput.value()
+            water: int = self.totalWaterInput.value()
 
             if dose <= 0 or water <= 0:
                 raise ValueError("Dose and water must be greater than 0")
 
 
-            select_date = self.dateTimeEdit.date().toString("MM-dd-yyyy")
-            grind = self.grindSettingInput.currentText()
-            temp = self.waterTempInput.value()
-            brew_time = self.brewTimeInput.text()
-            notes = self.brewNotesInput.toPlainText().strip()
-            rating = self.rateInput.currentText()
+            select_date: str = self.dateTimeEdit.date().toString("MM-dd-yyyy")
+            grind: str = self.grindSettingInput.currentText()
+            temp: int = self.waterTempInput.value()
+            brew_time: str = self.brewTimeInput.text()
+            notes: str = self.brewNotesInput.toPlainText().strip()
+            rating: str = self.rateInput.currentText()
 
-            row_data = [select_date, bean_str, method_str, grind, dose, water, temp, brew_time, notes, rating]
+            row_data: list = [select_date, bean_str, method_str, grind, dose, water, temp, brew_time, notes, rating]
 
             with open(self.__csv_file_name, "a", newline="", encoding="utf-8") as file:
                 writer = csv.writer(file)
@@ -63,18 +74,17 @@ class Logic(QMainWindow, Ui_MainWindow):
             QMessageBox.critical(self, "Failure", "Entry could not be saved", io_error)
 
 
-    def reset_form(self):
+    def reset_form(self) -> None:
+        """
+        Clears out all text and restores the default values.
+        """
         self.beanOriginInput.clear()
         self.brewNotesInput.clear()
-
-
         self.coffeeDoseInput.setValue(self.coffeeDoseInput.minimum())
         self.totalWaterInput.setValue(self.totalWaterInput.minimum())
         self.waterTempInput.setValue(self.waterTempInput.minimum())
-
         self.brewTimeInput.setTime(self.brewTimeInput.minimumTime())
         self.dateTimeEdit.setDate(QDate.currentDate())
-
         self.dripperSelectionInput.setCurrentIndex(0)
         self.grindSettingInput.setCurrentIndex(0)
         self.rateInput.setCurrentIndex(0)
