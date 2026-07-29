@@ -1,3 +1,4 @@
+import os
 import csv
 from PyQt6.QtCore import *
 from gui import *
@@ -12,9 +13,10 @@ class Logic(QMainWindow, Ui_MainWindow):
         """
         Constructor method. Sets the default values of the brew object.
         """
+        base_dir: str = os.path.dirname(os.path.abspath(__file__))
         super().__init__()
         self.setupUi(self)
-        self.__csv_file_name: str = "data.csv"
+        self.__csv_file_name: str = os.path.join(base_dir, "data.csv")
         self.dateTimeEdit.setDate(QDate.currentDate())
         self.dateTimeEdit.setMaximumDate(QDate.currentDate())
         self.brewNotesInput.setTabChangesFocus(True)
@@ -64,8 +66,7 @@ class Logic(QMainWindow, Ui_MainWindow):
             QMessageBox.warning(self, "Input Error", str(val_error))
 
         except IOError as io_error:
-            QMessageBox.critical(self, "Failure", "Entry could not be saved", str(io_error))
-
+            QMessageBox.critical(self, "Failure", f"Entry could not be saved.\n\nDetails: {io_error}")
 
     def __clear_fields(self) -> None:
         """
