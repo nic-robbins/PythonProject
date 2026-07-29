@@ -3,7 +3,6 @@ from PyQt6.QtCore import *
 from gui import *
 from PyQt6.QtWidgets import *
 
-
 class Logic(QMainWindow, Ui_MainWindow):
     """
     Class which includes all logic related to the functionality of the Brew Tracker app.
@@ -15,17 +14,12 @@ class Logic(QMainWindow, Ui_MainWindow):
         """
         super().__init__()
         self.setupUi(self)
-
         self.__csv_file_name: str = "data.csv"
-
         self.dateTimeEdit.setDate(QDate.currentDate())
         self.dateTimeEdit.setMaximumDate(QDate.currentDate())
-
         self.brewNotesInput.setTabChangesFocus(True)
-
         self.saveButton.clicked.connect(self.submit)
         self.clearButton.clicked.connect(self.reset_form)
-
 
     def submit(self) -> None:
         """
@@ -47,13 +41,12 @@ class Logic(QMainWindow, Ui_MainWindow):
             if dose <= 0 or water <= 0:
                 raise ValueError("Dose and water must be greater than 0")
 
-
-            select_date: str = self.dateTimeEdit.date().toString("MM-dd-yyyy")
             grind: str = self.grindSettingInput.currentText()
             temp: int = self.waterTempInput.value()
             brew_time: str = self.brewTimeInput.text()
             notes: str = self.brewNotesInput.toPlainText().strip()
             rating: str = self.rateInput.currentText()
+            select_date: str = self.dateTimeEdit.date().toString("MM-dd-yyyy")
 
             row_data: list = [select_date, bean_str, method_str, grind, dose, water, temp, brew_time, notes, rating]
 
@@ -79,13 +72,13 @@ class Logic(QMainWindow, Ui_MainWindow):
         Clears out all text and restores the default values.
         """
         self.beanOriginInput.clear()
-        self.brewNotesInput.clear()
+        self.dripperSelectionInput.setCurrentIndex(0)
+        self.grindSettingInput.setCurrentIndex(0)
         self.coffeeDoseInput.setValue(self.coffeeDoseInput.minimum())
         self.totalWaterInput.setValue(self.totalWaterInput.minimum())
         self.waterTempInput.setValue(self.waterTempInput.minimum())
         self.brewTimeInput.setTime(self.brewTimeInput.minimumTime())
-        self.dateTimeEdit.setDate(QDate.currentDate())
-        self.dripperSelectionInput.setCurrentIndex(0)
-        self.grindSettingInput.setCurrentIndex(0)
+        self.brewNotesInput.clear()
         self.rateInput.setCurrentIndex(0)
+        self.dateTimeEdit.setDate(QDate.currentDate())
 
